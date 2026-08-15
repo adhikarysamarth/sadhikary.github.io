@@ -4,13 +4,227 @@
 <meta charset="UTF-8">
 <title>Dashboards | S.Adhikary</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- SAME HEAD + STYLES AS INDEX (identical to About page above) -->
-<!-- To keep message short, reuse the same CSS block -->
+
+<!-- FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0A0E15;
+    --bg-alt:#0F1520;
+    --panel:rgba(255,255,255,0.035);
+    --panel-border:rgba(255,255,255,0.09);
+    --cyan:#4FD6FF;
+    --violet:#8C7CFF;
+    --amber:#FFB454;
+    --text:#E9EDF4;
+    --text-soft:#8D99AE;
+    --grid:rgba(143,163,190,0.09);
+  }
+
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.65;
+  }
+  a{ color:inherit; text-decoration:none; }
+
+  /* NAV */
+  .navwrap{
+    position:sticky; top:0; z-index:30;
+    background:rgba(10,14,21,0.78);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--panel-border);
+  }
+  nav.tabnav{
+    max-width:1100px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 28px;
+  }
+  .brand{ display:flex; align-items:center; gap:11px; }
+  .brand span{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:600;
+    font-size:15.5px;
+  }
+  .dot-cursor{
+    width:8px; height:15px;
+    background:var(--cyan);
+    display:inline-block;
+    animation:blink 1.1s step-end infinite;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  .navlinks{ display:flex; gap:2px; }
+  .navlinks a{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    padding:8px 14px;
+    border-radius:5px;
+    color:var(--text-soft);
+  }
+  .navlinks a:hover{ background:var(--panel); color:var(--text); }
+  .navlinks a.active{ background:rgba(79,214,255,0.12); color:var(--cyan); }
+
+  .status{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:#7FE0A8;
+    display:flex; align-items:center; gap:6px;
+  }
+  .status::before{
+    content:""; width:6px; height:6px;
+    background:#7FE0A8; border-radius:50%;
+  }
+
+  /* HERO */
+  header{
+    padding:110px 28px 130px;
+    position:relative;
+    background:
+      radial-gradient(760px 420px at 12% -10%, rgba(140,124,255,0.20), transparent 60%),
+      radial-gradient(700px 460px at 92% 10%, rgba(79,214,255,0.16), transparent 60%),
+      var(--bg);
+  }
+  .grid-bg{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size:42px 42px;
+    mask-image:radial-gradient(ellipse 65% 70% at 50% 30%, black 25%, transparent 78%);
+  }
+  .hero-inner{ max-width:1100px; margin:0 auto; position:relative; }
+
+  .term{
+    max-width:560px;
+    background:rgba(15,21,32,0.75);
+    border:1px solid var(--panel-border);
+    border-radius:10px;
+    backdrop-filter:blur(8px);
+  }
+  .term-bar{
+    display:flex; gap:8px;
+    padding:11px 14px;
+    background:rgba(255,255,255,0.03);
+    border-bottom:1px solid var(--panel-border);
+  }
+  .tdot{ width:10px; height:10px; border-radius:50%; }
+  .tdot:nth-child(1){ background:#FF6159; }
+  .tdot:nth-child(2){ background:#FFBD2E; }
+  .tdot:nth-child(3){ background:#28C840; }
+
+  .term-title{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    color:var(--text-soft);
+  }
+  .term-body{ padding:26px 24px 30px; }
+  .line{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13.5px;
+    color:var(--text-soft);
+    margin-bottom:6px;
+  }
+  header h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:clamp(2.1rem, 5.2vw, 3.1rem);
+    margin:10px 0 0;
+  }
+  .accent{ color:var(--cyan); }
+
+  /* MAIN */
+  main{ max-width:1100px; margin:0 auto; padding:0 28px; }
+  .section{ padding:80px 0; border-top:1px solid var(--panel-border); }
+  .section-head{ margin-bottom:36px; }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    color:var(--cyan);
+  }
+  .eyebrow::before{ content:"// "; color:var(--text-soft); }
+  .section-head h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:2rem;
+    margin-top:8px;
+  }
+
+  /* CARDS */
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:20px;
+  }
+  .card{
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:12px;
+    padding:26px 24px;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card:hover{
+    transform:translateY(-4px);
+    border-color:rgba(79,214,255,0.35);
+    box-shadow:0 20px 40px -26px rgba(79,214,255,0.25);
+  }
+  .card-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:18px;
+  }
+  .status-dot{
+    width:8px; height:8px; border-radius:50%;
+  }
+  .status-dot.cyan{ background:var(--cyan); }
+  .status-dot.violet{ background:var(--violet); }
+  .status-dot.amber{ background:var(--amber); }
+
+  .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:10.5px;
+    padding:3px 9px;
+    border:1px solid var(--panel-border);
+    border-radius:4px;
+    color:var(--text-soft);
+  }
+  .card h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:1.12rem;
+    margin:0 0 8px;
+  }
+  .card p{
+    font-size:13.5px;
+    color:var(--text-soft);
+    margin:0;
+  }
+
+  /* FOOTER */
+  footer{
+    border-top:1px solid var(--panel-border);
+    padding:48px 28px;
+    text-align:center;
+  }
+  footer p{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    color:var(--text-soft);
+  }
+</style>
 </head>
 
 <body>
 
-<!-- NAV identical -->
+<!-- NAV -->
 <div class="navwrap">
   <nav class="tabnav">
     <a class="brand" href="index.html">
@@ -28,8 +242,10 @@
   </nav>
 </div>
 
+<!-- HERO -->
 <header>
   <div class="grid-bg"></div>
+
   <div class="hero-inner">
     <div class="term">
       <div class="term-bar">
@@ -44,6 +260,7 @@
   </div>
 </header>
 
+<!-- MAIN -->
 <main>
   <section class="section">
     <div class="section-head">
@@ -52,6 +269,7 @@
     </div>
 
     <div class="cards">
+
       <div class="card">
         <div class="card-top">
           <span class="status-dot cyan"></span>
@@ -67,7 +285,10 @@
           <span class="tag">Power BI</span>
         </div>
         <h3>Training Program Performance</h3>
-        <p>Power BI dashbboard tracking program outcomes and enrollment patterns.</p>
+        <p>Tableau visualization tracking program outcomes and enrollment patterns.</p>
+
+        <iframe title="Student Data" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiZmU3NzFjYzctNjc2Mi00ODA0LWE2NGEtYmUxNTA0ZjFhMzU0IiwidCI6IjlmYTU2OTU3LTM5N2ItNGQ3Yi1iMWY1LTA3Zjc2NWE0Nzc1NCJ9" frameborder="0" allowFullScreen="true"></iframe>
+
       </div>
 
       <div class="card">
@@ -78,10 +299,12 @@
         <h3>ETPL Catalog Optimization</h3>
         <p>Operational dashboard supporting catalog updates and compliance workflows.</p>
       </div>
+
     </div>
   </section>
 </main>
 
+<!-- FOOTER -->
 <footer>
   <img src="logo-full.png" style="height:52px;">
   <p>&copy; 2026 Samarth Adhikary — sadhikary.com</p>
@@ -89,3 +312,6 @@
 
 </body>
 </html>
+
+
+
