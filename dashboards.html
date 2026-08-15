@@ -1,39 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Dashboards | Samarth Adhikary</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body { font-family:Arial, sans-serif; max-width:900px; margin:40px auto; padding:0 20px; }
-    h1 { font-size:36px; }
-    iframe { width:100%; height:500px; border:none; margin-bottom:40px; }
-  </style>
+<meta charset="UTF-8">
+<title>Dashboards | S.Adhikary</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- SAME HEAD + STYLES AS INDEX (identical to About page above) -->
+<!-- To keep message short, reuse the same CSS block -->
 </head>
+
 <body>
 
-<nav style="background:#1a1a1a; padding:15px; text-align:center;">
-  <a href="index.html" style="color:white; margin:0 15px; text-decoration:none; font-weight:bold;">Home</a>
-  <a href="about.html" style="color:white; margin:0 15px; text-decoration:none; font-weight:bold;">About</a>
-  <a href="projects.html" style="color:white; margin:0 15px; text-decoration:none; font-weight:bold;">Projects</a>
-  <a href="dashboards.html" style="color:white; margin:0 15px; text-decoration:none; font-weight:bold;">Dashboards</a>
-  <a href="contact.html" style="color:white; margin:0 15px; text-decoration:none; font-weight:bold;">Contact</a>
-</nav>
-  
-<h1>Dashboards</h1>
-<p>Below are selected dashboards showcasing analytics work across workforce development, training programs, and performance metrics.</p>
+<!-- NAV identical -->
+<div class="navwrap">
+  <nav class="tabnav">
+    <a class="brand" href="index.html">
+      <img class="mark" src="images/logo-icon.png" width="30" height="27">
+      <span>S.ADHIKARY<span class="dot-cursor"></span></span>
+    </a>
+    <div class="navlinks">
+      <a href="index.html">home</a>
+      <a href="about.html">about</a>
+      <a href="projects.html">projects</a>
+      <a href="dashboards.html" class="active">dashboards</a>
+      <a href="contact.html">contact</a>
+      <span class="status">online</span>
+    </div>
+  </nav>
+</div>
 
-<h2>Power BI Dashboard</h2>
-<p>Workforce Trends & Training Outcomes</p>
-<!-- Replace the src with your Power BI embed link -->
-<iframe title="Student Data" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiZmU3NzFjYzctNjc2Mi00ODA0LWE2NGEtYmUxNTA0ZjFhMzU0IiwidCI6IjlmYTU2OTU3LTM5N2ItNGQ3Yi1iMWY1LTA3Zjc2NWE0Nzc1NCJ9" frameborder="0" allowFullScreen="true"></iframe>
+<header>
+  <div class="grid-bg"></div>
+  <div class="hero-inner">
+    <div class="term">
+      <div class="term-bar">
+        <span class="tdot"></span><span class="tdot"></span><span class="tdot"></span>
+        <span class="term-title">samarth@portfolio — zsh</span>
+      </div>
+      <div class="term-body">
+        <div class="line"><span class="prompt">samarth</span>@<span class="path">portfolio</span> % ls dashboards</div>
+        <h1>My <span class="accent">Dashboards</span></h1>
+      </div>
+    </div>
+  </div>
+</header>
 
-<h2>Tableau Dashboard</h2>
-<p>Program Performance Visualization</p>
+<main>
+  <section class="section">
+    <div class="section-head">
+      <span class="eyebrow">analytics</span>
+      <h2>Interactive Dashboards</h2>
+    </div>
 
-  
-<!-- Replace the src with your Tableau embed link -->
-<iframe src="YOUR_TABLEAU_EMBED_URL_HERE"></iframe>
+    <div class="cards">
+      <div class="card">
+        <div class="card-top">
+          <span class="status-dot cyan"></span>
+          <span class="tag">power_bi</span>
+        </div>
+        <h3>Workforce Analytics Dashboard</h3>
+        <p>Clear workforce reporting with trends, demographics, and performance indicators.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <span class="status-dot violet"></span>
+          <span class="tag">Power BI</span>
+        </div>
+        <h3>Training Program Performance</h3>
+        <p>Power BI dashbboard tracking program outcomes and enrollment patterns.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <span class="status-dot amber"></span>
+          <span class="tag">program_ops</span>
+        </div>
+        <h3>ETPL Catalog Optimization</h3>
+        <p>Operational dashboard supporting catalog updates and compliance workflows.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <img src="images/logo-full.png" style="height:52px;">
+  <p>&copy; 2026 Samarth Adhikary — sadhikary.com</p>
+</footer>
 
 </body>
 </html>
