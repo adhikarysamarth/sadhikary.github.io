@@ -1,39 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Contact | Samarth Adhikary</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body { font-family:Arial, sans-serif; max-width:900px; margin:40px auto; padding:0 20px; }
-    h1 { font-size:36px; }
-    label { display:block; margin-top:20px; }
-    input, textarea {
-      width:100%; padding:10px; margin-top:5px;
-      border:1px solid #ccc; border-radius:5px;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Contact | S.Adhikary</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<nav style="background:#1a1a1a; padding:15px; text-align:center;">
-  <a href="index.html" style="color:white; margin:0 15px; text-decoration:none; font-weight:bold;">Home</a>
-  <a href="about.html" style="color:white; margin:0 15px; text-decoration:none; font-weight:bold;">About</a>
-  <a href="projects.html" style="color:white; margin:0 15px; text-decoration:none; font-weight:bold;">Projects</a>
-  <a href="dashboards.html" style="color:white; margin:0 15px; text-decoration:none; font-weight:bold;">Dashboards</a>
-  <a href="contact.html" style="color:white; margin:0 15px; text-decoration:none; font-weight:bold;">Contact</a>
-</nav>
-  
-<h1>Contact</h1>
-<p>Feel free to reach out for collaboration, training services, analytics work, or professional inquiries.</p>
+<div class="navwrap">
+  <nav class="tabnav">
+    <a class="brand" href="index.html">
+      <img class="mark" src="images/logo-icon.png" alt="S.Adhikary mark" width="30" height="27">
+      <span>S.ADHIKARY<span class="dot-cursor"></span></span>
+    </a>
+    <div class="navlinks">
+      <a href="index.html">home</a>
+      <a href="about.html">about</a>
+      <a href="projects.html">projects</a>
+      <a href="dashboards.html">dashboards</a>
+      <a href="contact.html" class="active">contact</a>
+      <span class="status">online</span>
+    </div>
+  </nav>
+</div>
 
-<p><strong>Email:</strong> samarth@sadhikary.com</p>
+<header>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="term">
+      <div class="term-bar">
+        <span class="tdot"></span><span class="tdot"></span><span class="tdot"></span>
+        <span class="term-title">samarth@portfolio &mdash; zsh</span>
+      </div>
+      <div class="term-body">
+        <div class="line"><span class="prompt">samarth</span>@<span class="path">portfolio</span> <span class="prompt">~</span> % mail --compose</div>
+        <h1>Get In <span class="accent">Touch</span></h1>
+      </div>
+    </div>
+  </div>
+</header>
 
-<form>
-  <label>Name</label>
-  <input type="text" placeholder="Your name">
+<main>
+  <section class="section" id="contact-info">
+    <div class="section-head">
+      <span class="eyebrow">contact</span>
+      <h2>Let's talk</h2>
+    </div>
+    <p>Feel free to reach out for collaboration, training services, analytics work, or professional inquiries.</p>
+    <div class="contact-line"><span class="k">email:</span> samarth@sadhikary.com</div>
+  </section>
 
-  <label>Email</label>
+  <section class="section" id="contact-form">
+    <div class="section-head">
+      <span class="eyebrow">new_message</span>
+      <h2>Send a message</h2>
+    </div>
+
+    <form class="form-grid">
+      <div class="field">
+        <label for="name">name</label>
+        <input type="text" id="name" name="name" placeholder="Your name">
+      </div>
+      <div class="field">
+        <label for="email">email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com">
+      </div>
+      <div class="field">
+        <label for="message">message</label>
+        <textarea id="message" name="message" rows="6" placeholder="Your message"></textarea>
+      </div>
+      <button type="submit" class="btn">send_message()</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <img src="images/logo-full.png" alt="S.Adhikary logo" style="height:52px; width:auto; margin-bottom:16px;">
+  <p>&copy; 2026 Samarth Adhikary &mdash; sadhikary.com</p>
+</footer>
+
+</body>
+</html>
   <input type="email" placeholder="Your email">
 
   <label>Message</label>
