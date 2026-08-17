@@ -1,26 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>About | Samarth Adhikary</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body { font-family:Arial, sans-serif; max-width:900px; margin:40px auto; padding:0 20px; }
-    h1 { font-size:36px; }
-    p { line-height:1.6; }
-  </style>
+<meta charset="UTF-8">
+<title>About | S.Adhikary</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<nav style="background:#1a1a1a; padding:15px; text-align:center;">
-  <a href="index.html" style="color:white; margin:0 15px; text-decoration:none; font-weight:bold;">Home</a>
-  <a href="about.html" style="color:white; margin:0 15px; text-decoration:none; font-weight:bold;">About</a>
-  <a href="projects.html" style="color:white; margin:0 15px; text-decoration:none; font-weight:bold;">Projects</a>
-  <a href="dashboards.html" style="color:white; margin:0 15px; text-decoration:none; font-weight:bold;">Dashboards</a>
-  <a href="contact.html" style="color:white; margin:0 15px; text-decoration:none; font-weight:bold;">Contact</a>
-</nav>
-  
-<h1>About Me</h1>
+<div class="navwrap">
+  <nav class="tabnav">
+    <a class="brand" href="index.html">
+      <img class="mark" src="images/logo-icon.png" alt="S.Adhikary mark" width="30" height="27">
+      <span>S.ADHIKARY<span class="dot-cursor"></span></span>
+    </a>
+    <div class="navlinks">
+      <a href="index.html">home</a>
+      <a href="about.html" class="active">about</a>
+      <a href="projects.html">projects</a>
+      <a href="dashboards.html">dashboards</a>
+      <a href="contact.html">contact</a>
+      <span class="status">online</span>
+    </div>
+  </nav>
+</div>
+
+<header>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="term">
+      <div class="term-bar">
+        <span class="tdot"></span><span class="tdot"></span><span class="tdot"></span>
+        <span class="term-title">samarth@portfolio &mdash; zsh</span>
+      </div>
+      <div class="term-body">
+        <div class="line"><span class="prompt">samarth</span>@<span class="path">portfolio</span> <span class="prompt">~</span> % cat about.md</div>
+        <h1>About <span class="accent">Me</span></h1>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section" id="profile">
+    <div class="section-head">
+      <span class="eyebrow">profile</span>
+      <h2>Program Manager &amp; Training Services Specialist</h2>
+    </div>
+    <p>I'm a <strong>Program Manager and Training Services Specialist</strong> focused on expanding tech training offerings, optimizing workflows, and delivering high&#8209;impact analytics dashboards.</p>
+    <p>My work sits at the intersection of <strong>data, compliance, and training</strong> &mdash; building the reporting and processes that help programs run cleanly and scale with confidence.</p>
+  </section>
+
+  <section class="section" id="focus">
+    <div class="section-head">
+      <span class="eyebrow">focus_areas</span>
+      <h2>What I work on</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-top">
+          <span class="status-dot cyan"></span>
+          <span class="tag">analytics</span>
+        </div>
+        <h3>BI Dashboards</h3>
+        <p>Building and maintaining Power BI and Tableau dashboards for workforce and program reporting.</p>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <span class="status-dot violet"></span>
+          <span class="tag">training</span>
+        </div>
+        <h3>Training Services</h3>
+        <p>Expanding tech training offerings and improving how programs are delivered and tracked.</p>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <span class="status-dot amber"></span>
+          <span class="tag">compliance</span>
+        </div>
+        <h3>Data &amp; Compliance</h3>
+        <p>Keeping catalogs, reporting, and workflows aligned with program and compliance requirements.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="section-head">
+      <span class="eyebrow">toolkit</span>
+      <h2>Tools &amp; skills</h2>
+    </div>
+    <div class="tag-row">
+      <span class="tag">Power BI</span>
+      <span class="tag">Tableau</span>
+      <span class="tag">Program Management</span>
+      <span class="tag">Workforce Analytics</span>
+      <span class="tag">Training Program Design</span>
+      <span class="tag">Workflow Optimization</span>
+      <span class="tag">Data Compliance</span>
+      <span class="tag">Catalog Management</span>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <img src="images/logo-full.png" alt="S.Adhikary logo" style="height:52px; width:auto; margin-bottom:16px;">
+  <p>&copy; 2026 Samarth Adhikary &mdash; sadhikary.com</p>
+</footer>
 
 </body>
 </html>
