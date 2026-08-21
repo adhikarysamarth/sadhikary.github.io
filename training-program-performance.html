@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
 <div class="navwrap">
   <nav class="tabnav">
     <a class="brand" href="index.html">
@@ -27,7 +26,6 @@
     </div>
   </nav>
 </div>
-
 <header>
   <div class="grid-bg" aria-hidden="true"></div>
   <div class="hero-inner">
@@ -43,17 +41,14 @@
     </div>
   </div>
 </header>
-
 <main>
   <section class="section" id="dashboard">
     <a class="back-link" href="dashboards.html">&larr; back_to_dashboards</a>
-
     <div class="section-head">
       <span class="eyebrow">power_bi</span>
       <h2>Training Program Performance</h2>
     </div>
     <p>Tracks training program outcomes and enrollment patterns &mdash; live view of the underlying Power BI report below.</p>
-
     <div class="embed-frame">
       <iframe title="Training Program Performance"
         src="https://app.powerbi.com/view?r=eyJrIjoiZmU3NzFjYzctNjc2Mi00ODA0LWE2NGEtYmUxNTA0ZjFhMzU0IiwidCI6IjlmYTU2OTU3LTM5N2ItNGQ3Yi1iMWY1LTA3Zjc2NWE0Nzc1NCJ9"
@@ -61,12 +56,88 @@
         allowFullScreen="true"></iframe>
     </div>
   </section>
-</main>
 
+  <section class="section" id="overview">
+    <div class="section-head">
+      <span class="eyebrow">overview</span>
+      <h2>What this is</h2>
+    </div>
+    <p>An executive dashboard built for a workforce training provider to track enrollment, completion, and job placement outcomes across 9,000+ students, multiple state workforce funding boards, and 160+ training programs. It replaced a manual, spreadsheet-based reporting process with a live, filterable view that career center coordinators and leadership use to monitor performance by fiscal year, funding source, state, coordinator, and program.</p>
+  </section>
+
+  <section class="section" id="problem">
+    <div class="section-head">
+      <span class="eyebrow">the_problem</span>
+      <h2>Business problem</h2>
+    </div>
+    <p>The organization receives funding from a mix of state workforce boards &mdash; WIOA across 11 states, Section 30, VRRAP, Trade Adjustment Assistance, and others &mdash; each of which reports on a July&ndash;June fiscal year rather than the calendar year. Leadership needed a single view that could:</p>
+    <ul>
+      <li>Track enrollment and completion trends on the funders' fiscal calendar, not the calendar year</li>
+      <li>Show completion and placement rates without over- or under-counting students still mid-program</li>
+      <li>Break down revenue and outcomes by funding source, state, career center, and coordinator</li>
+      <li>Replace a manually rebuilt monthly Excel report with something that updates itself</li>
+    </ul>
+  </section>
+
+  <section class="section" id="process">
+    <div class="section-head">
+      <span class="eyebrow">data_pipeline</span>
+      <h2>Data source &amp; process</h2>
+    </div>
+    <p>Student enrollment, program, and placement records were exported from the school's Student ERP system as a raw Excel extract &mdash; one row per student enrollment, covering fields like course package, admission and placement status, funding source, dates (inquiry, admission, start, end), and placement outcome.</p>
+
+    <div class="term">
+      <div class="term-bar">
+        <span class="tdot"></span><span class="tdot"></span><span class="tdot"></span>
+        <span class="term-title">etl_pipeline.py</span>
+      </div>
+      <div class="term-body">
+        <div class="line"><span class="prompt">01</span> &mdash; extraction: ERP export &rarr; raw .xlsx (student, program, funding, placement fields)</div>
+        <div class="line"><span class="prompt">02</span> &mdash; transform (pandas): dedupe columns, split funding source into program + state, convert salary bands to numeric midpoints</div>
+        <div class="line"><span class="prompt">03</span> &mdash; fiscal logic: derive Enrolled FY / Exited FY from Start &amp; End Date on a July&ndash;June calendar</div>
+        <div class="line"><span class="prompt">04</span> &mdash; funnel timing: inquiry&rarr;admission, admission&rarr;start, program duration (days)</div>
+        <div class="line"><span class="prompt">05</span> &mdash; model (Power BI): star schema &mdash; Fact_Students + Dim_Date, Dim_Program, Dim_State, Dim_Funding, Dim_Coordinator, Dim_LeadSource</div>
+        <div class="line"><span class="prompt">06</span> &mdash; refresh: re-run on new ERP export &rarr; reload &rarr; relationships &amp; DAX measures recalculate</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="design">
+    <div class="section-head">
+      <span class="eyebrow">design_decisions</span>
+      <h2>Key design decisions</h2>
+    </div>
+    <ul>
+      <li><strong>Fiscal-year-first design.</strong> Every date-based visual is built around the funders' July&ndash;June fiscal year rather than the calendar year, including a custom sort order so month names display in fiscal sequence.</li>
+      <li><strong>Rate measures exclude in-progress students.</strong> Completion rate and placement rate are calculated against students who've reached a final outcome (completed or dropped out), not the full population &mdash; so students still mid-training don't artificially dilute the numbers.</li>
+      <li><strong>Cross-filterable</strong> by funding source, state, career center, coordinator, and program, so a single dashboard serves both an executive rollup view and a drill-down tool for individual funding board reporting.</li>
+    </ul>
+  </section>
+
+  <section class="section" id="whats-shown">
+    <div class="section-head">
+      <span class="eyebrow">the_dashboard</span>
+      <h2>What it shows</h2>
+    </div>
+    <ul>
+      <li>KPI summary: total students, completion rate, placement rate, total revenue, students currently in training</li>
+      <li>Revenue by funding source, showing the mix across WIOA, VRRAP, Section 30, and other boards</li>
+      <li>Placement outcomes by program, ranking which training tracks lead to the most job placements</li>
+      <li>Monthly enrollment trend, in fiscal-year order, filterable by state, funding source, coordinator, program, and lead source</li>
+    </ul>
+  </section>
+
+  <section class="section" id="tools">
+    <div class="section-head">
+      <span class="eyebrow">stack</span>
+      <h2>Tools</h2>
+    </div>
+    <p>Python (pandas) for data cleaning and fiscal-year logic &middot; Power BI (Power Query, DAX, data modeling) for the dashboard &middot; Excel for the intermediate cleaned data model.</p>
+  </section>
+</main>
 <footer>
   <img src="logo-full.png" alt="S.Adhikary logo" style="height:52px; width:auto; margin-bottom:16px;">
   <p>&copy; 2026 Samarth Adhikary &mdash; sadhikary.com</p>
 </footer>
-
 </body>
 </html>
