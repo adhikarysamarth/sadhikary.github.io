@@ -1,3 +1,4 @@
+<!-- Main Page
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +22,7 @@
       <a href="index.html" class="active">home</a>
       <a href="about.html">about</a>
       <a href="projects.html">projects</a>
-      <!--<a href="dashboards.html">dashboards</a> -->
+      <!--<a href="dashboards.html">dashboards</a>
       <a href="contact.html">contact</a>
       <span class="status">online</span>
     </div>
@@ -165,6 +166,187 @@
   <img src="logo-full.png" alt="S.Adhikary logo" style="height:52px; width:auto; margin-bottom:16px;">
   <p>&copy; 2026 Samarth Adhikary &mdash; sadhikary.com</p>
 </footer>
+</body>
+</html>
+Main Page-->
+
+<!-- Maintenance Section -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>S.Adhikary | Site Under Maintenance</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .maint-wrap{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:28px;
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(760px 420px at 12% -10%, rgba(140,124,255,0.20), transparent 60%),
+      radial-gradient(700px 460px at 92% 10%, rgba(79,214,255,0.16), transparent 60%),
+      var(--bg);
+  }
+  .maint-card{
+    max-width:520px;
+    width:100%;
+    background:rgba(15,21,32,0.75);
+    border:1px solid var(--panel-border);
+    border-radius:12px;
+    box-shadow:0 30px 70px -30px rgba(0,0,0,0.7), 0 0 0 1px rgba(79,214,255,0.04);
+    backdrop-filter:blur(8px);
+    overflow:hidden;
+    position:relative;
+    z-index:1;
+  }
+  .maint-brand{
+    display:flex; align-items:center; gap:11px;
+    padding:20px 24px 0;
+  }
+  .maint-brand span{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:600;
+    font-size:14.5px;
+    color:var(--text);
+  }
+  .maint-bar{
+    display:flex; align-items:center; gap:8px;
+    padding:11px 24px;
+    margin-top:18px;
+    border-top:1px solid var(--panel-border);
+    border-bottom:1px solid var(--panel-border);
+    background:rgba(255,255,255,0.03);
+  }
+  .maint-bar .tdot{ width:10px; height:10px; border-radius:50%; }
+  .maint-bar .tdot:nth-child(1){ background:#FF6159; }
+  .maint-bar .tdot:nth-child(2){ background:#FFBD2E; }
+  .maint-bar .tdot:nth-child(3){ background:#28C840; }
+  .maint-bar .maint-title{
+    margin-left:8px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    color:var(--text-soft);
+  }
+  .maint-body{ padding:28px 26px 34px; }
+  .maint-body .line{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    color:var(--text-soft);
+    margin-bottom:8px;
+  }
+  .maint-body .line .prompt{ color:var(--violet); }
+  .maint-body .line .path{ color:#7FE0A8; }
+  .maint-status{
+    display:inline-flex; align-items:center; gap:7px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px; letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--amber);
+    border:1px solid rgba(255,180,84,0.35);
+    background:rgba(255,180,84,0.08);
+    padding:5px 12px;
+    border-radius:999px;
+    margin-bottom:18px;
+  }
+  .maint-status::before{
+    content:"";
+    width:7px; height:7px; border-radius:50%;
+    background:var(--amber);
+    box-shadow:0 0 8px var(--amber);
+    animation:blink 1.3s ease-in-out infinite;
+  }
+  .maint-body h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:clamp(1.7rem, 5vw, 2.3rem);
+    margin:0 0 12px;
+    color:var(--text);
+    line-height:1.2;
+  }
+  .maint-body p{
+    font-size:14.5px;
+    color:var(--text-soft);
+    max-width:420px;
+    margin:0 0 22px;
+  }
+  .maint-progress{
+    width:100%; height:4px;
+    background:var(--panel-border);
+    border-radius:999px;
+    overflow:hidden;
+    margin-bottom:22px;
+  }
+  .maint-progress::after{
+    content:"";
+    display:block;
+    height:100%;
+    width:40%;
+    border-radius:999px;
+    background:linear-gradient(90deg, var(--cyan), var(--violet));
+    animation:sweep 1.8s ease-in-out infinite;
+  }
+  @keyframes sweep{
+    0%{ margin-left:-40%; }
+    100%{ margin-left:100%; }
+  }
+  .maint-contact{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    color:var(--text-soft);
+    border-top:1px solid var(--panel-border);
+    padding-top:18px;
+  }
+  .maint-contact a{ color:var(--cyan); text-decoration:none; }
+  .maint-contact a:hover{ text-decoration:underline; }
+
+  @media (prefers-reduced-motion:reduce){
+    .maint-status::before{ animation:none; }
+    .maint-progress::after{ animation:none; margin-left:0; width:100%; opacity:0.5; }
+  }
+</style>
+</head>
+<body>
+
+<div class="maint-wrap">
+  <svg class="circuit" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true" style="position:absolute; inset:0; opacity:0.35;">
+    <path d="M0,120 L260,120 L300,160 L620,160 L660,120 L1200,120"/>
+    <path d="M0,420 L200,420 L240,380 L520,380 L560,420 L1200,420"/>
+    <circle class="p1" cx="300" cy="160" r="4"/>
+    <circle class="p2" cx="660" cy="120" r="4"/>
+  </svg>
+
+  <div class="maint-card">
+    <div class="maint-brand">
+      <img class="mark" src="images/logo-icon.png" alt="S.Adhikary mark" width="26" height="24">
+      <span>S.ADHIKARY</span>
+    </div>
+
+    <div class="maint-bar">
+      <span class="tdot"></span><span class="tdot"></span><span class="tdot"></span>
+      <span class="maint-title">samarth@portfolio &mdash; zsh</span>
+    </div>
+
+    <div class="maint-body">
+      <div class="line"><span class="prompt">samarth</span>@<span class="path">portfolio</span> <span class="prompt">~</span> % systemctl status site</div>
+      <span class="maint-status">maintenance mode</span>
+      <h1>Site under maintenance</h1>
+      <p>I'm making some updates behind the scenes. The site will be back shortly &mdash; thanks for your patience.</p>
+      <div class="maint-progress" role="progressbar" aria-label="Maintenance in progress"></div>
+      <div class="maint-contact">
+        Need to reach me in the meantime? <a href="mailto:mail@sadhikary.com">mail@sadhikary.com</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
